@@ -1,0 +1,674 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean');
+
+/*reset*/
+body {
+    margin: 0;
+}
+h2, h3, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+header, main, footer, section, nav {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a img {
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+/*common*/
+body {
+    font: 14px 'Rubik', 'ë‚˜ëˆ”ê³ ë”•', 'ë‹ì›€', Dotum, Helvetica, 'Apple SD Gothic Neo', 'sans-serif';
+    color: #222;
+}
+
+#skip-nav {
+    position: fixed;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    transition: 0.3s;
+}
+
+#skip-nav:focus {
+    top: 0;
+}
+
+#wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/*header*/
+#header div.menu {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 46px;
+    height: 46px;
+    line-height: 50px;
+    border-radius: 50px;
+    text-align: center;
+    background: #fff;
+    z-index: 4;
+}
+
+#header div.menu a {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 13px;
+    overflow: hidden;
+}
+
+#header div.menu a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #222;
+}
+
+#header div.menu a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #222;
+}
+
+#header div.menu span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 100%;
+    height: 1px;
+    text-indent: -999px;
+    overflow: hidden;
+    background: #222;
+}
+
+#gnb {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 44%;
+    height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+    z-index: 3;
+    transition: 0.4s ease-in-out;
+}
+
+#header div.menu.open + #gnb {
+    left: 0;
+}
+
+#gnb ul {
+    width: 100%;
+    height: 100%;
+    padding: 145px 25%;
+    box-sizing: border-box;
+    background: #e0e0e0;
+}
+
+#gnb ul li {
+    line-height: 70px;
+    width: 80%;
+}
+
+#gnb ul li a {
+    display: inline-block;
+    font-size: 40px;
+    color: #9b9b9b;
+    font-weight: bold;
+}
+
+#gnb ul li.on a,
+#gnb ul li a:hover {
+    color: #222;
+}
+
+@media screen and (max-width: 960px) {
+    #header h1 {
+        top: 40px;
+        left: 100px;
+    }
+    
+    #header div.menu {
+        top: 30px;
+    }
+    
+    #gnb {
+        width: 80%;
+        padding: 18px;
+    }
+    
+    #gnb ul li {
+        line-height: 50px;
+    }
+    
+    #gnb ul li a {
+        font-size: 20px;
+    }
+}
+
+/*footer*/
+#footer {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 4;
+}
+
+#footer a {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 960px) {
+    #footer {
+        bottom: 20px;
+        left: 11%;
+    }
+}
+
+/*main*/
+#main a.hidden {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 0;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#main a.hidden:focus {
+    height: 30px;
+}
+#main a.hidden.start {
+    top: 0;
+}
+#main a.hidden.end {
+    bottom: 0;
+}
+
+/*control*/
+#control {
+    position: absolute;
+    bottom: 23%;
+    right: 40px;
+    z-index: 2;
+}
+#control a {
+    display: block;
+    width: 46px;
+    margin: 5px 0;
+    line-height: 46px;
+    border-radius: 50px;
+    text-align: center;
+    background: #fff;
+}
+
+#control a img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 960px) {
+    #control {
+        right: 20px;
+    }
+}
+
+/*contents*/
+#contents {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 40%;
+    height: calc(100% - 60px);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+#contents > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#contents > div.down,
+#contents > div.up,
+#contents > div.hide-down,
+#contents > div.hide-up {
+    display: block;
+}
+
+#contents > div h2 {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    padding-right: 43px;
+    font-size: 17px;
+}
+
+#contents > div h2:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 40px;
+    height: 1px;
+    background: #222;
+}
+
+#contents > div div.detail {
+    position: absolute;
+    bottom: 100px;
+    left: 35%;
+    padding: 0 10px;
+    opacity: 0;
+}
+
+#contents > #intro div.detail {
+    top: 40%;
+    left: 20%;
+    bottom: auto;
+}
+
+#contents > div.down div.detail {
+    animation: down 0.5s forwards;
+}
+
+#contents > div.up div.detail {
+    animation: up 0.5s forwards;
+}
+
+#contents > div.hide-down div.detail {
+    animation: hide-up 0.3s forwards;
+}
+
+#contents > div.hide-up div.detail {
+    animation: hide-down 0.3s forwards;
+}
+
+#contents > div div.detail span.num-now {
+    display: inline-block; font-size: 17px;
+}
+
+#contents > div div.detail h3 {
+    font-size: 70px;
+}
+
+#contents > #intro div.detail h3 {
+    font-size: 80px;
+}
+
+#contents > #portfolio03 div.detail h3 {
+    font-size: 50px;
+}
+
+#contents > #portfolio03 div.detail h3 span {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#contents > div div.detail p.text {
+    font-size: 18px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#contents > div div.detail span.type {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#contents > div div.detail ul {
+    margin: 10px 0;
+}
+
+#contents > div div.detail ul li {
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Noto Sans KR', sans-serif; word-break: keep-all;
+}
+
+#contents > div div.detail div.btn-box {
+    width: 100%;
+}
+
+#contents > div div.detail div.btn-box a {
+    display: inline-block;
+    width: 45%;
+    margin: 0 5px 5px 0;
+    line-height: 45px;
+    border: 1px solid #222;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#contents > div div.detail div.btn-box a:hover {
+    background: #222;
+    color: #fff;
+}
+
+#contents > div div.detail p.notice {
+    font-size: 11px;
+    font-family: 'Noto Sans KR', sans-serif;
+    word-break: keep-all;
+}
+
+@keyframes up {
+    0% {
+        opacity: 0;
+        transform: translateY(350px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes down {
+    0% {
+        opacity: 0;
+        transform: translateY(-350px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hide-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(-350px);
+    }
+}
+@keyframes hide-down {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(350px);
+    }
+}
+@media screen and (max-width: 1400px) {
+    #contents > #portfolio03 div.detail h3 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    #contents {
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 80%;
+        height: 40%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+    
+    #contents > div h2 {
+        position: absolute;
+        top: 10px;
+        left: auto;
+        right: 30px;
+    }
+    
+    #contents > div div.detail {
+        position: static;
+        padding: 30px;
+    }
+    
+    #contents > div div.detail h3 {
+        font-size: 40px;
+    }
+    
+    #contents > #intro div.detail h3 {
+        font-size: 45px;
+    }
+    
+    #contents > #portfolio03 div.detail h3 {
+        font-size: 28px;
+    }
+    
+    #contents > div div.detail p.text {
+        font-size: 15px;
+    }
+    
+    #contents > div div.detail span.type {
+        margin: 2% 0;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    
+    #contents > div div.detail ul:not(:last-child) {
+        display: none;
+    }
+    
+    #contents > div div.detail ul li {
+        font-size: 14px;
+    }
+    
+    #contents > div div.detail p.notice {
+        display: none;
+    }
+    
+    #contents > div div.detail div.btn-box a {
+        line-height: 30px;
+    }
+}
+
+/*background*/
+#background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+#background h2 {
+    width: 0;
+    height: 0;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+#background div.scroll-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+#background div.scroll-page:nth-child(2) {
+    background: url(../images/intro.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(3) {
+    background: url(../images/portfolio1.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(4) {
+    background: url(../images/portfolio2.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(5) {
+    background: url(../images/portfolio3.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(6) {
+    background: url(../images/portfolio4.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(7) {
+    background: url(../images/skills.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page:nth-child(8) {
+    background: url(../images/profile.png) no-repeat left top /cover;
+}
+
+#background div.scroll-page img {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+    max-width: 900px;
+    width: 45%;
+    min-width: 250px;
+    box-shadow: 30px 40px 40px rgba(0, 0, 0, 0.6);
+}
+
+.circle1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 40%;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.circle2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 25%;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.circle3 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.circle4 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 40%;
+    top: 75%;
+    transform: translate(0, -50%);
+}
+
+.circle5 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 25%;
+    top: 75%;
+    transform: translate(0, -50%);
+}
+
+.circle6 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 10%;
+    top: 75%;
+    transform: translate(0, -50%);
+}
+
+@media screen and (max-width: 960px) {
+    #background div.scroll-page img {
+        right: auto;
+        left: 50%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle1 {
+        right: auto;
+        left: 20%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle2 {
+        right: auto;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle3 {
+        right: auto;
+        left: 80%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle4 {
+        right: auto;
+        left: 20%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle5 {
+        right: auto;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .circle6 {
+        right: auto;
+        left: 80%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+    }
+    
+}
